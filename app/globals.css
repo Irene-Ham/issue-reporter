@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #faf9f6;
+  --ink-950: #14171f;
+  --ink-900: #1c2130;
+  --ink-700: #454b5e;
+  --ink-500: #6b7286;
+  --ink-400: #9298a8;
+  --signal-500: #f0a83a;
+  --signal-400: #f5bb5c;
+  --route-500: #2f6f5e;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink-950: var(--ink-950);
+  --color-ink-900: var(--ink-900);
+  --color-ink-700: var(--ink-700);
+  --color-ink-500: var(--ink-500);
+  --color-ink-400: var(--ink-400);
+  --color-signal-500: var(--signal-500);
+  --color-signal-400: var(--signal-400);
+  --color-route-500: var(--route-500);
+  --font-display: "Avenir Next", "Segoe UI Semibold", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink-950);
+  font-family: var(--font-sans);
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal-500);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
