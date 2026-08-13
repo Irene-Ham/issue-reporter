@@ -54,7 +54,7 @@ export default function IssueDetailPage() {
       setIssue(data.issue);
       setHistory(data.history);
     } catch {
-      setError("Network error — check your connection and try again.");
+      setError("Network error - check your connection and try again.");
     } finally {
       setLoading(false);
     }
@@ -83,14 +83,14 @@ export default function IssueDetailPage() {
       setNote("");
       await load();
     } catch {
-      setError("Network error — check your connection and try again.");
+      setError("Network error - check your connection and try again.");
     } finally {
       setUpdating(false);
     }
   }
 
   if (authLoading || !user || loading) {
-    return <div className="mx-auto max-w-2xl px-4 sm:px-6 py-10 text-sm text-ink-500">Loading…</div>;
+    return <div className="mx-auto max-w-2xl px-4 sm:px-6 py-10 text-sm text-ink-500">Loading...</div>;
   }
 
   if (error && !issue) {
@@ -121,11 +121,11 @@ export default function IssueDetailPage() {
         </div>
         <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-ink-500">
           <CategoryBadge category={issue.category} />
-          <span aria-hidden="true">·</span>
+          <span aria-hidden="true">.</span>
           <span>{issue.location}</span>
-          <span aria-hidden="true">·</span>
+          <span aria-hidden="true">.</span>
           <span>reported by {issue.reporter_name}</span>
-          <span aria-hidden="true">·</span>
+          <span aria-hidden="true">.</span>
           <span>{formatDate(issue.created_at)}</span>
         </div>
         <p className="mt-4 text-sm text-ink-700 leading-relaxed">{issue.description}</p>
@@ -140,7 +140,6 @@ export default function IssueDetailPage() {
         )}
       </div>
 
-      {/* Status timeline */}
       <div className="rounded-xl border border-ink-900/10 bg-white p-5 sm:p-6">
         <h2 className="font-display font-semibold text-ink-900 mb-4">Status history</h2>
         <ol className="relative border-l border-ink-900/10 pl-5 space-y-5">
@@ -166,7 +165,6 @@ export default function IssueDetailPage() {
         </ol>
       </div>
 
-      {/* Staff-only status update control */}
       {user.role === "staff" && nextStatus && (
         <div className="rounded-xl border border-ink-900/10 bg-white p-5 sm:p-6 space-y-3">
           <h2 className="font-display font-semibold text-ink-900">Update status</h2>
@@ -192,7 +190,7 @@ export default function IssueDetailPage() {
             disabled={updating}
             className="rounded-lg bg-ink-900 px-5 py-2.5 text-sm font-medium text-paper hover:bg-ink-950 transition-colors disabled:opacity-50"
           >
-            {updating ? "Updating…" : NEXT_STATUS_LABEL[nextStatus]}
+            {updating ? "Updating..." : NEXT_STATUS_LABEL[nextStatus]}
           </button>
         </div>
       )}

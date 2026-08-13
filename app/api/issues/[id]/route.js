@@ -3,8 +3,6 @@ import { db } from "@/lib/db";
 import { getSession } from "@/lib/auth";
 import { statusUpdateSchema, validate } from "@/lib/validation";
 
-// Allowed forward transitions for the issue status state machine.
-// Kept intentionally simple and linear per the project's activity diagram.
 const ALLOWED_TRANSITIONS = {
   reported: ["in_progress"],
   in_progress: ["resolved"],
@@ -17,7 +15,6 @@ async function getIssueId(context) {
   return Number.isInteger(idNum) && idNum > 0 ? idNum : null;
 }
 
-// GET /api/issues/:id — issue detail plus its status history
 export async function GET(request, context) {
   const session = await getSession();
   if (!session) {
@@ -53,7 +50,6 @@ export async function GET(request, context) {
   return NextResponse.json({ issue, history });
 }
 
-// PATCH /api/issues/:id — staff-only status transition, logged to status_updates.
 export async function PATCH(request, context) {
   const session = await getSession();
   if (!session) {
